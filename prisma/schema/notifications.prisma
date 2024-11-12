@@ -1,0 +1,10 @@
+model Notifications_History {
+    id        Int       @id @default(autoincrement())
+    type      String?
+    sender    String?
+    target    String?
+    title     String?
+    message   String?
+    createdAt DateTime? @default(now()) @db.Timestamptz()
+    createdBy String?
+}

@@ -1,0 +1,237 @@
+model FQC_Checklist_IDN {
+  id                       Int       @id
+  private_id               String?
+  RJR_Verification_Flavor  String?
+  Verification_Lot         String?
+  Supplier                 String?
+  Heater_Top_Cover         String?
+  Heating_Holder           String?
+  Silicone_1               String?
+  Tube                     String?
+  Plastic_Silicone_Qty     String?
+  Thimble                  String?
+  Silicone_3               String?
+  Silicone_2               String?
+  Bottom_Cover             String?
+  Ceramic_Heater           String?
+  Nomor_Bahan_Produk_Jadi  String?
+  Pengkodean_Bahan         String?
+  Heater_puff_WO           String?
+  Qty                      Int?
+  PO_Filling_Blister_WO    String?
+  Rasa_Ekstra              String?
+  Remark                   String?
+  Prod_Plan                DateTime? @db.Timestamptz()
+  Taken_From_IQC_status    Boolean?
+  Taken_From_IQC_date      DateTime? @db.Timestamptz()
+  Put_On_Production_status Boolean?
+  Put_On_Production_date   DateTime? @db.Timestamptz()
+  Sample_In_status         Boolean?
+  Sample_In_date           DateTime? @db.Timestamptz()
+  Sample_Tested_status     Boolean?
+  Sample_Tested_date       DateTime? @db.Timestamptz()
+  Sample_Test_Result       String?
+  Tester                   String?
+  Tester_Plan              String?
+  Verification_status      Boolean?
+  Verification_date        DateTime? @db.Timestamptz()
+  Verificator              String?
+  Notes                    String?
+  createdAt                DateTime? @default(now()) @db.Timestamptz()
+  createdBy                String?
+  updatedAt                DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy                String?
+}
+
+model FQC_Checklist_RJR {
+  id                                          Int       @id
+  private_id                                  String?
+  Pengumuman_Pengiriman_Shipment_Notification String?
+  Customer_PO                                 String?
+  Material_Code_Serial                        String?
+  Flavor_Concentration_Rasa                   String?
+  Column1                                     String?
+  Line                                        String?
+  Order_Qty                                   String?
+  Work_Order                                  String?
+  Qty_Work_Order                              Int?
+  Tanggal_Mulai                               DateTime? @db.Timestamptz()
+  MNF_Issue_QTY                               Int?
+  Receipt_Qty_of_Qualified_Product_BUoM       Int?
+  Unreceived_Qty                              Int?
+  Notes_Catatan                               String?
+  Inspection_Keramik_Batch_Number             String?
+  FAI_InDate                                  DateTime? @db.Timestamptz()
+  FAI_Result                                  String?
+  FAI_ResultDate                              DateTime? @db.Timestamptz()
+  FAI_Inspector                               String?
+  Inspection_InDate                           DateTime? @db.Timestamptz()
+  Inspection_Result                           String?
+  Inspection_ResultDate                       DateTime? @db.Timestamptz()
+  Inspection_Inspector                        String?
+  AltitudeNegatifPressure_InDate              DateTime? @db.Timestamptz()
+  AltitudeNegatifPressure_Result              String?
+  AltitudeNegatifPressure_ResultDate          DateTime? @db.Timestamptz()
+  AltitudeNegatifPressure_Inspector           String?
+  Dripping_InDate                             DateTime? @db.Timestamptz()
+  Dripping_Result                             String?
+  Dripping_ResultDate                         DateTime? @db.Timestamptz()
+  Dripping_Inspector                          String?
+  Shift                                       String?
+  Notes                                       String?
+  createdAt                                   DateTime? @default(now()) @db.Timestamptz()
+  createdBy                                   String?
+  updatedAt                                   DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy                                   String?
+}
+
+model STI_Quality_FQC_TestReport_Heaterpuff {
+  id                      Int       @id
+  private_id              String?
+  Manufacture_Date        DateTime? @db.Timestamptz()
+  Suction_Work_Order      String?
+  Batch_Number            String?
+  Liquid_Batch            String?
+  Supplier                String?
+  Heater_Top_Cover        String?
+  Silicone                String?
+  Heating_Holder          String?
+  Tube                    String?
+  Flavor                  String?
+  Number_Of_Sample        Int?
+  Defect_Quantity         Int?
+  Defect_Rate             Decimal?
+  Defect_Description      String?
+  Defect_Description_Note String?
+  Result                  String?
+  PO_Filling_Blister_WO   String?
+  Completed_Date          DateTime? @db.Timestamptz()
+  Note                    String?
+  Tested_By               String?
+  Verified_By             String?
+  Verification_Date       DateTime? @db.Timestamptz()
+  Production_Plan         DateTime? @db.Timestamptz()
+  createdAt               DateTime? @default(now()) @db.Timestamptz()
+  createdBy               String?
+  updatedAt               DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy               String?
+}
+
+model STI_Quality_FQC_TestReport_Liquid {
+  id                 Int       @id
+  private_id         String?
+  Sampling_Time      DateTime? @db.Timestamptz()
+  Material_Number    String?
+  Batch_Number       String?
+  Flavor             String?
+  Sampel_Size        Int?
+  Defect_Quantity    Int?
+  Defect_Rate        Decimal?
+  Defect_Description String?
+  Result             String?
+  Completed_Date     DateTime? @db.Timestamptz()
+  Note               String?
+  Tested_By          String?
+  Tester_ID          String?
+  createdAt          DateTime? @default(now()) @db.Timestamptz()
+  createdBy          String?
+  updatedAt          DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy          String?
+}
+
+model STI_Quality_FQC_TestReport_Dripping {
+  id                      Int       @id @default(autoincrement())
+  private_id              String?
+  Manufacture_Date        DateTime? @db.Timestamptz()
+  Job_Order               String?
+  Product_Line            String?
+  Flavor                  String?
+  Sampel_Size             Int?
+  Defect_Quantity         Int?
+  Defect_Rate             Decimal?
+  Defect_Description_Note String?
+  Defect_Description      String?
+  Result                  String?
+  Completed_Date          DateTime? @db.Timestamptz()
+  Note                    String?
+  Tested_By               String?
+  Move_To                 String?
+  Verified_By             String?
+  Verification_Date       DateTime? @db.Timestamptz()
+  createdAt               DateTime? @default(now()) @db.Timestamptz()
+  createdBy               String?
+  updatedAt               DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy               String?
+}
+
+model STI_Quality_FQC_TestReport_FAI {
+  id                               Int       @id @default(autoincrement())
+  private_id                       String?
+  Manufacture_Date                 DateTime? @db.Timestamptz()
+  Job_Order                        String?
+  Product_Line                     String?
+  Flavor                           String?
+  Sampel_Size                      Int?
+  Defect_Quantity                  Int?
+  Defect_Rate                      Decimal?
+  Defect_Description_Note          String?
+  Defect_Description               String?
+  Result                           String?
+  Completed_Date                   DateTime? @db.Timestamptz()
+  Note                             String?
+  Tested_By                        String?
+  Combined_Samples_With_Inspection Boolean?
+  Verified_By                      String?
+  Verification_Date                DateTime? @db.Timestamptz()
+  createdAt                        DateTime? @default(now()) @db.Timestamptz()
+  createdBy                        String?
+  updatedAt                        DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy                        String?
+}
+
+model STI_Quality_FQC_TestReport_Inspection {
+  id                      Int       @id @default(autoincrement())
+  private_id              String?
+  Manufacture_Date        DateTime? @db.Timestamptz()
+  Batch_Number            String?
+  Job_Order               String?
+  Product_Line            String?
+  Flavor                  String?
+  Sampel_Size             Int?
+  Defect_Quantity         Int?
+  Defect_Rate             Decimal?
+  Defect_Description_Note String?
+  Defect_Description      String?
+  Result                  String?
+  Completed_Date          DateTime? @db.Timestamptz()
+  Note                    String?
+  Tested_By               String?
+  Verified_By             String?
+  Verification_Date       DateTime? @db.Timestamptz()
+  createdAt               DateTime? @default(now()) @db.Timestamptz()
+  createdBy               String?
+  updatedAt               DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy               String?
+}
+
+model STI_Quality_FQC_TestReport_NegativePressure {
+  id                Int       @id @default(autoincrement())
+  private_id        String?
+  Complete_Date     DateTime? @db.Timestamptz()
+  IPQC_PIC          String?
+  Job_Order         String?
+  Product_Line      String?
+  Mould             String?
+  Flavor            String?
+  Sample_Size       Int?
+  Result            String?
+  Tested_By         String?
+  ConfirmedBy       String?
+  Notes             String?
+  createdAt         DateTime? @default(now()) @db.Timestamptz()
+  createdBy         String?
+  updatedAt         DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy         String?
+  Verification_Date DateTime? @db.Timestamptz()
+  Verified_By       String?
+}

@@ -1,0 +1,43 @@
+model STI_Quality_DefectCatalogue_POD_Packaging {
+    id                       Int       @id @default(autoincrement())
+    code                     String?   @unique
+    section                  String?
+    materialName             String?
+    materialCode             String?
+    defectName_in_indonesian String?
+    defectName_in_english    String?
+    defectName_in_chinese    String?
+    defectDescription        String?
+    normalImagesCollection   String?
+    defectimagesCollection   String?
+    Notes                    String?
+    createdAt                DateTime? @default(now()) @db.Timestamptz()
+    createdBy                String?
+    updatedAt                DateTime? @default(now()) @updatedAt @db.Timestamptz()
+    updatedBy                String?
+    verifiedAt               DateTime? @db.Timestamptz()
+    verifiedBy               String?
+}
+
+model STI_Quality_POD_Packaging_NG {
+    id              Int       @id @default(autoincrement())
+    date            DateTime?
+    shift           String?
+    employee_ID     String?
+    employee_name   String?
+    line            String?
+    machine_number  String?
+    section         String?
+    check_station   String?
+    defect          String?
+    timeRangeString String?
+    timeRangeStart  DateTime?
+    timeRangeEnd    DateTime?
+    Notes           String?
+    createdAt       DateTime? @default(now()) @db.Timestamptz()
+    createdBy       String?
+    updatedAt       DateTime? @default(now()) @updatedAt @db.Timestamptz()
+    updatedBy       String?
+    verifiedAt      DateTime? @db.Timestamptz()
+    verifiedBy      String?
+}

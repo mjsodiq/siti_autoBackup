@@ -1,0 +1,29 @@
+model STI_Quality_All_Finding_MixAudit {
+    id                  String    @id
+    private_id          String?
+    name                String?
+    employee_id         String?
+    date                DateTime? @db.Timestamptz()
+    week                Int?
+    shift               String?
+    line                String?
+    section             String?
+    flavor              String?
+    concentration       String?
+    category            String?
+    description         String?
+    picture_finding     String?
+    quickly_action      String?
+    confirm             String?
+    score               Int?
+    status              String?
+    improverment_action String?
+    picture_improvement String?
+    notes               String?
+    createdAt           DateTime? @default(now()) @db.Timestamptz()
+    createdBy           String?
+    updatedAt           DateTime? @default(now()) @updatedAt @db.Timestamptz()
+    updatedBy           String?
+    Verification_Date   DateTime? @db.Timestamptz()
+    Verified_By         String?
+}

@@ -1,0 +1,56 @@
+model Raw_Datasource_STI_POD_RJR {
+  id                      Int       @id
+  shipment_notification   String?
+  customer_PO             String?
+  material_code_serial    String?
+  flavor_concentration    String?
+  blister                 String?
+  line                    String?
+  associate_work_order    String?
+  production_order_number String?
+  qty_work_order          Int?
+  tanggal_mulai           DateTime? @db.Timestamptz()
+  QC_sample               Int?
+  accumulated_qty         Int?
+  order_qty               Int?
+  notes                   String?
+  createdAt               DateTime? @default(now()) @db.Timestamptz()
+  createdBy               String?
+  updatedAt               DateTime? @db.Timestamptz()
+  updatedBy               String?
+  validatedAt             DateTime? @db.Timestamptz()
+  validatedBy             String?
+}
+
+model Raw_Datasource_STI_POD_IDN {
+  id                               Int       @id
+  heater_qty                       String?
+  RJR_verification_flavor          String?
+  verification_lot                 String?
+  supplier                         String?
+  heater_top_cover                 String?
+  heating_holder                   String?
+  silicone_1                       String?
+  tube                             String?
+  plastic_and_silicone_qty         String?
+  thimble                          String?
+  silicone_3                       String?
+  silicone_2                       String?
+  bottom_cover                     String?
+  ceramic_heater                   String?
+  finished_product_material_number String?
+  material_code                    String?
+  heater_puff_WO                   String?
+  qty                              Int?
+  filling_or_blister_WO            String?
+  production_date                  DateTime? @db.Timestamptz()
+  extra_flavor                     String?
+  remark                           String?
+  prod_plan                        DateTime? @db.Timestamptz()
+  createdAt                        DateTime? @default(now()) @db.Timestamptz()
+  createdBy                        String?
+  updatedAt                        DateTime? @db.Timestamptz()
+  updatedBy                        String?
+  validatedAt                      DateTime? @db.Timestamptz()
+  validatedBy                      String?
+}

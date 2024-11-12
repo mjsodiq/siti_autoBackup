@@ -1,0 +1,61 @@
+model STI_Quality_AssyFilling_IPQC_FAI {
+  id             Int       @id @default(autoincrement())
+  WorkOrder      String?
+  Line           String?
+  Section        String?
+  LaserCode      String?
+  Date           DateTime? @db.Timestamptz()
+  FAI_StartTime  DateTime? @db.Timestamptz()
+  FAI_FinishTime DateTime? @db.Timestamptz()
+  CPK            Decimal?
+  Image1         String?
+  Image2         String?
+  Image3         String?
+  Notes          String?
+  createdAt      DateTime? @default(now()) @db.Timestamptz()
+  createdBy      String
+  updatedAt      DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy      String
+  validatedAt    DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  validatedBy    String?
+  userId         String?
+  User           User?     @relation(fields: [userId], references: [id])
+}
+
+model STI_Quality_AssyFilling_IPQC_Packaging_InsertCapsule {
+  id                     String    @id
+  ipqc_verification      String?
+  time_insert_capsule    DateTime? @db.Timestamptz()
+  private_id             String?
+  line_packaging         String?
+  pack_machine_number    String?
+  operator_name          String?
+  wo_packaging           String?
+  wo_assembly            String?
+  filling_line           String?
+  pallet_number          String?
+  quantity_capsule       Int?
+  quantity_NG            Int?
+  NG_Reverse             Int?
+  NG_Foreign             Int?
+  NG_BrokenCapsule       Int?
+  NG_WrongCode           Int?
+  NG_BrokenPVC           Int?
+  NG_BrokenAlumuniumFilm Int?
+  NG_ForeignInTube       Int?
+  NG_CodeAtTube          Int?
+  NG_LeakEliquid         Int?
+  NG_DamageTube          Int?
+  NG_HadapTerbalik       Int?
+  NG_MixFlavor           Int?
+  NG_MixConcentration    Int?
+  NG_Missjudge           Int?
+  NG_NoLaserCode         Int?
+  notes                  String?
+  createdAt              DateTime? @default(now()) @db.Timestamptz()
+  createdBy              String?
+  updatedAt              DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy              String?
+  Verification_Date      DateTime? @default(now()) @updatedAt @db.Timestamptz()
+  Verified_By            String?
+}

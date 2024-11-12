@@ -1,0 +1,88 @@
+model User {
+  id                               String                             @id
+  user_id                          String?                            @unique
+  emailVerified                    DateTime?
+  username                         String?                            @unique
+  password                         String?
+  name                             String?
+  email                            String?
+  division                         String?
+  section                          String?
+  position                         String?
+  contact                          String?
+  report_to                        String?                            @default("-")
+  notes                            String?                            @default("-")
+  authority_level                  Int?
+  createdAt                        DateTime?                          @default(now()) @db.Timestamptz()
+  createdBy                        String?
+  updatedAt                        DateTime?                          @default(now()) @updatedAt @db.Timestamptz()
+  updatedBy                        String?
+  image                            String?
+  lastNotificationIDRead           Int?
+  isStillActive                    Boolean?
+  accounts                         Account[]
+  sessions                         Session[]
+  Authenticator                    Authenticator[]
+  STI_Quality_AssyFilling_IPQC_FAI STI_Quality_AssyFilling_IPQC_FAI[]
+}
+
+model Session {
+  id              String    @id
+  user_id         String
+  user            User      @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  refresh_token   String?
+  fingerprint     String?
+  device_session  String?
+  browser_session String?
+  last_ip_address String?
+  notes           String?   @default("-")
+  createdAt       DateTime? @default(now()) @db.Timestamp()
+  updatedAt       DateTime? @default(now()) @updatedAt @db.Timestamp()
+  sessionToken    String    @unique
+  expires         DateTime
+}
+
+model Account {
+  user_id           String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+// Optional for WebAuthn support
+model Authenticator {
+  credentialID         String  @unique
+  user_id              String
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@id([user_id, credentialID])
+}
